@@ -1,0 +1,51 @@
+body {
+    background: linear-gradient(powderblue, yellow);
+}
+h1 {
+    color: black;
+    text-align: center;
+}
+/*
+img {
+    display: block;
+    margin: auto;
+    width: 10%;
+}
+ */
+/*
+a {
+	font-weight: bold;
+	font-size: 20px;
+	margin-left: 45%;
+}
+ */
+
+form {
+    margin-left: 40%;
+	margin-right:40%;
+	border-radius: 25px;
+}
+p{
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+p1{
+	font-weight: bold;
+	font-size: 20px;
+}
+.myDiv {
+    font-weight: bold;
+	font-size: 20px;
+	margin-left: 45%;
+}
+.newDiv {
+    font-weight: bold;
+	font-size: 20px;
+	margin-left: 45%;
+}
+.newerDiv {
+    font-weight: bold;
+	font-size: 20px;
+	margin-left: 35%;
+}
