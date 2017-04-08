@@ -56,7 +56,6 @@ const sessionOptions = {
 };
 app.use(expressSess(sessionOptions));
 
-
 app.get('/restricted',function(req,res){
   if(!req.session.username){
     res.redirect('login');
@@ -71,10 +70,8 @@ app.get('/logout',function(req,res,next){
   res.redirect('/');
 });
 
-
   app.post('/login', function(req, res,next) {
       User.findOne({'username':req.body.username},function(err, user,count) {
-      console.log(user);
       if(!err && user) {
           if(bcrypt.hashSync(req.body.password,user.pwSalt) == user.password){
             req.session.regenerate((err) => {
@@ -93,11 +90,10 @@ app.get('/logout',function(req,res,next){
           else{
             res.render('login', {message:'Your login or password is incorrect.',css_file:"/base.css"});
           }
-
       } else {
         res.render('login', {message:'Your login or password is incorrect.',css_file:"/base.css"});
       }
-      })
+    });
       });
 
 app.post('/register', function(req, res) {
@@ -119,7 +115,6 @@ app.post('/register', function(req, res) {
           var pw = newUser.generateHash(req.body.password);
           newUser.password = pw.hash;
           newUser.pwSalt = pw.salt;
-          console.log(newUser);
 
           newUser.save(function(err) {
             if (err){
@@ -127,7 +122,6 @@ app.post('/register', function(req, res) {
               throw err;
             }
             console.log('User Registration succesful');
-            console.log(req.session.username);
             res.render('home',{css_file:"/base.css",username:req.session.username});
           });
       req.session.regenerate((err) => {
@@ -148,8 +142,7 @@ app.get('/',function(req,res){
   res.render('index',{css_file:"/base.css"});
 });
 app.get('/home',function(req,res){
-  req.session.reload(function(err){});
-  res.render('home',{css_file:"/base.css",username:req.session.username});
+  res.render('home',{css_file:"/base.css"});
 });
 
 app.get('/register',function(req,res){
